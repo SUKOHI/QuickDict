@@ -13,7 +13,7 @@ class QuickDictRefreshCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dict:refresh';
+    protected $signature = 'dict:refresh {table?} {--A|all}';
 
     /**
      * The console command description.
@@ -43,19 +43,25 @@ class QuickDictRefreshCommand extends Command
     public function handle()
     {
         $table_names = $this->_dict->getTableNames();
+        $target_table = $this->argument('table');
+        $all_tables = $this->option('all');
 
         foreach ($table_names as $table) {
 
-            if(\Schema::hasTable($table)) {
+            if($target_table == $table || $all_tables) {
 
-                \DB::table($table)->truncate();
-                Artisan::call('db:seed', [
-                    '--class' => $this->_dict->getSeederClassName($table)
-                ]);
+                if (\Schema::hasTable($table)) {
 
-            } else {
+                    \DB::table($table)->truncate();
+                    Artisan::call('db:seed', [
+                        '--class' => $this->_dict->getSeederClassName($table)
+                    ]);
 
-                $this->error('Table '. $table .' doesn\'t exist');
+                } else {
+
+                    $this->error('Table ' . $table . ' doesn\'t exist');
+
+                }
 
             }
 
