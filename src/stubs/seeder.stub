@@ -1,0 +1,28 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class DummyClass extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $dict_values = config('quick_dict.DummyTable', []);
+        $now = now();
+
+        foreach ($dict_values as $key => $value) {
+
+            \DB::table('DummyTable')->insert([
+                'key' => $key,
+                'value' => $value,
+                'created_at' => $now,
+                'updated_at' => $now
+            ]);
+
+        }
+    }
+}
