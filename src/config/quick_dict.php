@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Call `php artisan vendor:publish --provider="Sukohi\QuickDict\QuickDictServiceProvider"` to publish.
+ * Please run `php artisan dict` to add your key-value data into DB.
  */
 
 return [
