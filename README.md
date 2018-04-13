@@ -72,9 +72,24 @@ Existing table will be ignored.
         ]
     ]
 
+# Update key-value data
+
+When you change key-value data of existing table, use `php artisan dict:refresh` command.
+The command has two ways.
+
+First one is with table name.
+
+    php artisan dict:refresh months
+    
+And another one is width `--all` option.
+
+    php artisan dict:refresh --all
+    
+Of cause this means all of your key-value data will be replaced with new ones.
+
 # Recommendation
 
-After running `php artisan dict` command, I recommend you to add created Seeder(s) into `database/seeds/DatabaseSeeder` if you'd like to manage your key-value data through seeder commnd like `php artisan migrate:fresh --seed`.
+After running `php artisan dict` command, I recommend you to add new Seeder(s) into `database/seeds/DatabaseSeeder` so that you can manage your key-value data also through seeder commnd like `php artisan migrate:fresh --seed`.
 
 # License
 
