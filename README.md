@@ -91,6 +91,22 @@ Of cause this means all of your key-value data will be replaced with new ones.
 
 After running `php artisan dict` command, I recommend you to add new Seeder(s) into `database/seeds/DatabaseSeeder` so that you can manage your key-value data also through seeder commnd like `php artisan migrate:fresh --seed`.
 
+# Retrieve key-value data
+
+You can use `dict()` helper function for retrieving the key-value data like so.
+
+    $collection = dict('months');
+
+    // or
+
+    echo dict('months.1');  // January
+
+    // or
+
+    $collection = dict(['months', 'weekday_names']);
+    echo $collection->toJson();
+
+
 # License
 
 This package is licensed under the MIT License.
