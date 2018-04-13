@@ -1,12 +1,13 @@
 {
     "name": "sukohi/quick-dict",
-    "description": "A Laravel package for make migration and seeder from key-value data.",
+    "description": "A Laravel package for create migration and seeder from key-value data.",
     "authors": [
         {
             "name": "Sukohi",
             "email": "capilano.sukohi@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {
         "laravel/framework": "~5.0"
     },
